@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  color-scheme: light dark;
+
+  --bg-light: #f9fafb;
+  --bg-dark: #0d1117;
+  --text-light: #1f2937;
+  --text-dark: #f1f5f9;
+  --primary-glow: 0 0 8px var(--tw-ring-color);
+  --focus-glow: 0 10 12px 2px rgba(59, 130, 246, 0.5);
+  --transition-base: all 0.25s ease;
+}
+
+
+:where(button, [role='button'], a, input, select, textarea) {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
+  transition: var(--transition-base);
+  outline-offset: 3px;
+  box-shadow: var(--primary-glow);
+}
+
+:where(button, [role='button'], a, input, select, textarea):focus-visible {
+  box-shadow: var(--focus-glow);
+  transform: scale(1.02);
+}
+
+:where(button, [role='button'], a):hover {
+  @apply bg-primary-50 dark:bg-primary-900/20;
+  transition: var(--transition-base);
+}
+
+* {
+  transition: color 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
