@@ -1,37 +1,49 @@
 # 📅 React Calendar View (Month & Week)
 
 This is my **Calendar View Assignment Project** built using **React, TypeScript, TailwindCSS**, and **Storybook**.  
-It shows both **Month** and **Week** views of a calendar where users can create, edit, and delete events easily.
+It allows users to view events in both **Month** and **Week** modes, and supports adding, editing, and deleting events.
 
 ---
 
-## 💡 Overview
+## 🖼️ Preview
 
-I created this project completely from scratch without using any prebuilt calendar libraries.  
-It has all the main features like:
+Here’s how the calendar looks:
+
+![Calendar View Screenshot](./src/assets/calendar-preview.png)
+
+*(Screenshot of my final calendar design — responsive, clean, and fully interactive.)*
+
+---
+
+## 💡 Project Overview
+
+I made this project completely from scratch without using any prebuilt calendar libraries.  
+It includes all the required functionalities with a focus on **responsiveness**, **accessibility**, and **clean UI**.
+
+### ✨ Features:
 - Month and Week calendar views  
-- Add, edit, and delete events  
-- Simple color selection for each event  
-- Responsive layout for mobile, tablet, and desktop  
-- Keyboard navigation and accessibility support  
-- Smooth hover effects and clean design  
-- All date logic handled with `date-fns`
+- Create / Edit / Delete events  
+- Select color for each event  
+- Fully responsive design (mobile, tablet, desktop)  
+- Keyboard navigation and accessibility  
+- Smooth hover effects and modern styling  
+- Built with TypeScript (strict mode)
 
 ---
 
-## 🧠 Tech Stack
+## ⚙️ Tech Stack
 
 - **React + TypeScript**  
-- **TailwindCSS** for styling  
-- **Vite** as build tool  
-- **date-fns** for date operations  
-- **Storybook** for UI testing and documentation
+- **TailwindCSS**  
+- **Vite** for fast build and dev setup  
+- **date-fns** for date utilities  
+- **Storybook** for UI previews and testing
 
 ---
 
-## ⚙️ How to Run
+## 🧭 How to Run Locally
 
-### 1️⃣ Clone and install
+### 1️⃣ Clone and install dependencies
 ```bash
 git clone https://github.com/yourusername/calendar-view.git
 cd calendar-view
