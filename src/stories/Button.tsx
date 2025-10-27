@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { PropsWithChildren, ButtonHTMLAttributes } from "react";
 
-import './button.css';
-
-export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
+export interface ButtonProps
+  extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
+  size?: "small" | "medium" | "large";
   primary?: boolean;
-  /** What background color to use */
-  backgroundColor?: string;
-  /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
-  /** Button contents */
-  label: string;
-  /** Optional click handler */
-  onClick?: () => void;
 }
 
-/** Primary UI component for user interaction */
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
+  size = "medium",
   primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  className = "",
+  children,
+  ...rest
+}) => {
+  const sizeClasses =
+    size === "small"
+      ? "text-xs px-2 py-1"
+      : size === "large"
+      ? "text-base px-4 py-2"
+      : "text-sm px-3 py-1.5";
+
+  const styleClasses = primary
+    ? "bg-blue-600 text-white hover:bg-blue-700"
+    : "bg-gray-100 text-gray-800 hover:bg-gray-200";
+
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
+      {...rest}
+      className={`rounded font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${sizeClasses} ${styleClasses} ${className}`}
     >
-      {label}
+      {children}
     </button>
   );
 };

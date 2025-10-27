@@ -1,36 +1,49 @@
-import React, { PropsWithChildren, ButtonHTMLAttributes } from "react";
+import React from "react";
+import { Button } from "./Button";
+import "./header.css";
 
-export interface ButtonProps
-  extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
-  size?: "small" | "medium" | "large";
-  primary?: boolean;
+type User = { name: string };
+
+export interface HeaderProps {
+  user?: User;
+  onLogin?: () => void;
+  onLogout?: () => void;
+  onCreateAccount?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  size = "medium",
-  primary = false,
-  className = "",
-  children,
-  ...rest
-}) => {
-  const sizeClasses =
-    size === "small"
-      ? "text-xs px-2 py-1"
-      : size === "large"
-      ? "text-base px-4 py-2"
-      : "text-sm px-3 py-1.5";
-
-  const styleClasses = primary
-    ? "bg-blue-600 text-white hover:bg-blue-700"
-    : "bg-gray-100 text-gray-800 hover:bg-gray-200";
-
-  return (
-    <button
-      type="button"
-      {...rest}
-      className={`rounded font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${sizeClasses} ${styleClasses} ${className}`}
-    >
-      {children}
-    </button>
-  );
-};
+export const Header: React.FC<HeaderProps> = ({
+  user,
+  onLogin,
+  onLogout,
+  onCreateAccount,
+}) => (
+  <header>
+    <div className="storybook-header">
+      <div>
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fillRule="evenodd">
+            <path d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z" fill="#FFF" />
+            <path d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z" fill="#555AB9" />
+            <path d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z" fill="#91BAF8" />
+          </g>
+        </svg>
+        <h1>Acme</h1>
+      </div>
+      <div>
+        {user ? (
+          <>
+            <span className="welcome">
+              Welcome, <b>{user.name}</b>!
+            </span>
+            <Button size="small" onClick={onLogout}>Log out</Button>
+          </>
+        ) : (
+          <>
+            <Button size="small" onClick={onLogin}>Log in</Button>
+            <Button primary size="small" onClick={onCreateAccount}>Sign up</Button>
+          </>
+        )}
+      </div>
+    </div>
+  </header>
+);
